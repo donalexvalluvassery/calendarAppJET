@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="134d914f-ce2e-4f4b-83cd-973e94f2067f" name="Default Changelist" comment="" />
+    <list default="true" id="134d914f-ce2e-4f4b-83cd-973e94f2067f" name="Default Changelist" comment="Initial Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,13 +74,35 @@
       <workItem from="1605799576970" duration="2873000" />
       <workItem from="1606111076904" duration="130947000" />
       <workItem from="1606904295859" duration="53640000" />
+      <workItem from="1607345478943" duration="305000" />
+      <workItem from="1607346073837" duration="304000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1607345680496">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1607345680496" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1605795175120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
