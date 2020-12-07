@@ -1,0 +1,290 @@
+<!-- <div id="calendar"></div>-->
+<!--    <oj-date-picker id="datepicker" value={{value}}>-->
+<!--    </oj-date-picker>-->
+
+<!--    <span class="oj-label">Current component value is:</span>-->
+<!--    <span><oj-bind-text value=[[value]]></oj-bind-text></span>-->
+<!-- Begin Timelime-->
+ <div id="sampleDemo" style="" class="demo-padding demo-container">
+     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+
+         <oj-timeline id='timeline' data-bind='attr: {"aria-label": "Single Series Timeline Demo. Current date is "}'
+                      minor-axis.scale="days"
+                      minor-axis.zoom-order='["days", "hours"]'
+                      major-axis.scale='months'
+                      tooltip.renderer="[[tooltipFunction]]"
+                      start='[[startYear]]'
+                      end='[[endYear]]'
+                      viewport-start='[[viewPort]]'
+                      selection-mode='single'
+                      selection='{{selectionValue}}'
+                      reference-objects='[[referenceObjects]]'
+                      data='[[timeDataProvider]]'
+                      overview.rendered='on'
+                      style='width:100%;height:500px'>
+             <template slot="seriesTemplate" data-oj-as="series">
+                 <oj-timeline-series
+                         label="[[series.id]]"
+                         empty-text="No Data."
+                >
+                 </oj-timeline-series>
+             </template>
+             <template slot="itemTemplate" data-oj-as="item">
+                 <oj-timeline-item
+                         series-id=""
+                         start='[[dateFormat(item.data.timestamp)]]'
+                         label='[[item.data.meetingName]]'
+                         end='[[item.data.hosts[0].userName]]'
+                         short-desc="[[item.data.meetingId]]"
+                         thumbnail="[[hostColour(item.data.host)]]"
+                         description="[[dateViewFormat(item.data.timestamp)]]"
+                         >
+                 </oj-timeline-item>
+             </template>
+             <oj-menu slot='contextMenu' aria-label='Match Edit'
+                      on-oj-action='[[menuItemAction]]'
+                      on-oj-before-open='[[beforeOpenFunction]]'>
+                 <oj-option value='action1' on-oj-action="[[openEditor]]" disabled="[[initial]]">Participants</oj-option>
+                 <oj-option value='action2' on-oj-action="[[openTime]]" disabled="[[active]]">Change Schedule</oj-option>
+                 <oj-option value='action3' on-oj-action="[[deleteClick]]"  disabled="[[active]]">Delete</oj-option>
+             </oj-menu>
+         </oj-timeline>
+
+
+
+
+     </div>
+ </div>
+
+
+<!-- End Timeline-->
+<!--    <oj-table id='table' aria-label='Departments Table'-->
+<!--              data='[[dataprovider]]'-->
+<!--              as='cell'-->
+<!--              dnd='{"reorder": {"columns": "enabled"}}'-->
+<!--              scroll-policy='loadMoreOnScroll'-->
+<!--              scroll-policy-options='{"fetchSize": 10}'-->
+<!--              selection-mode='{"row": "single", "column": "none"}'-->
+<!--              selected.row='{{selectedRows}}'-->
+<!--              columns='[{"headerText": "Host",-->
+<!--                                                     "field": "host",-->
+<!--                                                     "resizable": "enabled",-->
+<!--                                                     "template": "hostCellTemplate"},-->
+<!--                                                     {"headerText": "Meeting Id",-->
+<!--                                                     "field": "meetingId",-->
+<!--                                                     "headerClassName": "oj-sm-only-hide",-->
+<!--                                                     "className": "oj-sm-only-hide",-->
+<!--                                                     "resizable": "enabled"},-->
+<!--                                                    {"headerText": "Meeting Name",-->
+<!--                                                     "field": "meetingName",-->
+<!--                                                     "resizable": "enabled"},-->
+<!--                                                    {"headerText": "Time",-->
+<!--                                                     "field": "timestamp",-->
+<!--                                                     "headerClassName": "oj-sm-only-hide",-->
+<!--                                                     "className": "oj-sm-only-hide",-->
+<!--                                                     "resizable": "enabled",-->
+<!--                                                     "template": "dateCellTemplate"}-->
+<!--                                                    ]'-->
+<!--              style='width: 100%; height: 200px;'>-->
+<!--        <template slot="cellTemplate">-->
+<!--            <oj-bind-text value="[[cell.data]]"></oj-bind-text>-->
+<!--        </template>-->
+<!--        <template slot="hostCellTemplate">-->
+<!--            <oj-led-gauge title="Host" value="[[format(cell.data)]]" min="0" max="1" thresholds="[[thresholdValues]]"-->
+<!--                          metric-label.rendered="off" style="float:left;width:20px;height:20px;"></oj-led-gauge>-->
+<!--        </template>-->
+<!--        <template slot="dateCellTemplate">-->
+<!--            <oj-bind-text value="[[timeFormat(cell.data)]]"></oj-bind-text>-->
+<!--        </template>-->
+<!--    </oj-table>-->
+<!--    <oj-text-area label-edge='provided'-->
+<!--                  label-hint='Current Selection'-->
+<!--                  value="[[selectionInfo]]"-->
+<!--                  max-rows="20">-->
+<!--    </oj-text-area>-->
+<!-- <div class="oj-panel demo-mypanel  oj-flex-item oj-sm-padding-2x-horizontal">-->
+<!--     <h5>Meeting Details</h5>-->
+<!--     <p><span data-bind="text: selectionInfo"></span></p>-->
+<!-- </div>-->
+ <br><br>
+<!--    <oj-button id="button1" on-oj-action="[[deleteClick]]"  disabled="[[active]]">Delete</oj-button>-->
+     <oj-popup id="popup1" class="demo-popup"
+               tail="none" position.my.horizontal="center" position.my.vertical="center"
+               position.at.horizontal="center" position.at.vertical="center"
+               position.of="window" position.offset.y="-10"
+               modality="modal" on-oj-animate-start="[[startAnimationListener]]">
+         <div class="demo-popup-body">
+             <div class="demo-popup-header"><h5>Create a new meeting</h5></div>
+             <form id="createform">
+             <div class="demo-popup-content">
+                 <oj-input-text id="meetname" value="{{meetName}}" label-hint="meeting name" required help-hints.definition="enter meeting name"></oj-input-text>
+                 <br><br>
+                 <oj-input-text id="meetid" value="{{meetId}}" label-hint="meeting id" required help-hints.definition="please enter meeting ID"></oj-input-text>
+                 <br><br>
+                 <oj-input-text id="hosts" value="{{hosts}}" label-hint="hosts list" required help-hints.definition="eg: host1, host2" multiple></oj-input-text>
+                 <br><br>
+                 <oj-input-text id="participants" value="{{users}}" label-hint="participant list" required help-hints.definition="eg: user1, user2"></oj-input-text>
+                 <br><br>
+                     <oj-input-date-time  value={{time}} label-hint="pick a schedule"></oj-input-date-time>
+             </div>
+             </form>
+             <div class="demo-popup-footer" style="margin-left:400px">
+                 <br>
+                 <oj-button id="btnCancel"  on-oj-action="[[cancelListener]]">
+                     Cancel
+                 </oj-button>
+                 <oj-button id="btnCreate"  on-oj-action="[[createListener]]">
+                     Create
+                 </oj-button>
+             </div>
+         </div>
+     </oj-popup>
+     <oj-button id="btnGo" on-oj-action="[[openListener]]" style="float:left">Create Meeting</oj-button>
+ <oj-popup id="popup2" class="demo-popup"
+           tail="none" position.my.horizontal="center" position.my.vertical="center"
+           position.at.horizontal="center" position.at.vertical="center"
+           position.of="window" position.offset.y="-10"
+           modality="modal" on-oj-animate-start="[[startAnimationListener]]">
+     <div class="demo-popup-body">
+         <div class="demo-popup-header"><h5>Participants</h5></div>
+         <form id="editform">
+<!--             <oj-table id='usertable' aria-label='Participants Table'-->
+<!--                       data='[[userprovider]]'-->
+<!--                       dnd='{"reorder": {"columns": "enabled"}}'-->
+<!--                       scroll-policy='loadMoreOnScroll'-->
+<!--                       scroll-policy-options='{"fetchSize": 10}'-->
+<!--                       selection-mode='{"row": "single", "column": "none"}'-->
+<!--                       on-selected-changed='{{userChangedListener}}'-->
+<!--                       columns='[{"headerText": "Username",-->
+<!--                                                     "field": "userName",-->
+<!--                                                     "resizable": "enabled"},-->
+<!--                                                     {"headerText": "First Name",-->
+<!--                                                     "field": "firstName",-->
+<!--                                                     "headerClassName": "oj-sm-only-hide",-->
+<!--                                                     "className": "oj-sm-only-hide",-->
+<!--                                                     "resizable": "enabled"},-->
+<!--                                                    {"headerText": "Last Name",-->
+<!--                                                     "field": "lastName",-->
+<!--                                                     "resizable": "enabled"},-->
+<!--                                                    {"headerText": "Email",-->
+<!--                                                     "field": "email",-->
+<!--                                                     "headerClassName": "oj-sm-only-hide",-->
+<!--                                                     "className": "oj-sm-only-hide",-->
+<!--                                                     "resizable": "enabled"}-->
+<!--                                                    ]'-->
+<!--                       style='width: 100%; height: 200px;'>-->
+
+<!--             </oj-table>-->
+<!--             List View-->
+             <div id="listViewContainer">
+                 <oj-form-layout max-columns="2" direction="row">
+<!--                         <oj-button id="addButton" class="oj-button-lg" on-oj-action="[[addInnerUser]]" disabled="[[isTextEmpty]]">Add</oj-button>-->
+<!--                         <oj-button id="updateButton" class="oj-button-lg" on-oj-action="[[updateSelected]]" disabled="[[isTextOrSelectionEmpty]]">Update</oj-button>-->
+<!--                         <oj-button id="removeButton" class="oj-button-lg" on-oj-action="[[deleteUser]]" disabled="[[isSelectionEmpty]]">Remove</oj-button>-->
+                 </oj-form-layout>
+                 <oj-list-view id="listview" aria-label="list using observable array"
+                               data="[[userprovider]]" gridlines.item="visibleExceptLast" selection-mode="single" selected="{{selectedItems}}"
+                               on-current-item-changed="[[userChangedListener]]">
+                     <template slot="itemTemplate" data-oj-as="item">
+                         <li>
+                             <oj-list-item-layout>
+                                 <span class="oj-typography-body-md oj-text-color-primary"><oj-bind-text value="[[item.data.userName]]"></oj-bind-text></span>
+                                 <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary"><oj-bind-text value="[[item.data.email]]"></oj-bind-text></span>
+                             </oj-list-item-layout>
+                         </li>
+                     </template>
+                 </oj-list-view>
+             </div>
+<!--             list view-->
+         </form>
+         <div class="demo-popup-footer">
+             <br>
+             <form id="inneruserform">
+             <oj-input-text id="inputItem" value="{{userName}}" label-hint="Enter username to add user" on-raw-value-changed="[[handleRawValueChanged]]" disabled="[[active]]">
+             </oj-input-text>
+             </form>
+             <br><br>
+             <oj-button id="btnAddUser"  on-oj-action="[[addInnerUser]]" disabled="[[active]]">
+                 Add
+             </oj-button>
+             <oj-button id="btnDelete"  on-oj-action="[[deleteUser]]" disabled="[[active]]">
+                 Delete
+             </oj-button>
+             <oj-button id="btnCancel"  on-oj-action="[[cancelEditor]]">
+                 Done
+             </oj-button>
+             <oj-popup id="popup3" class="demo-popup"
+                       tail="none" position.my.horizontal="center" position.my.vertical="center"
+                       position.at.horizontal="center" position.at.vertical="center"
+                       position.of="window" position.offset.y="-10"
+                       modality="modal" on-oj-animate-start="[[startAnimationListener]]">
+                 <div class="demo-popup-body">
+                     <div class="demo-popup-header"><h5>Add a participant</h5></div>
+                     <form id="adduserform">
+                         <div class="demo-popup-content">
+                             <oj-input-text id="partusername" value="{{userName}}" label-hint="username" required help-hints.definition="enter username of participant"></oj-input-text>
+                             <br><br>
+                         </div>
+                     </form>
+                     <div class="demo-popup-footer">
+                         <br>
+                         <oj-button id="btnCancel"  on-oj-action="[[cancelAddUser]]">
+                             Cancel
+                         </oj-button>
+                         <oj-button id="btnAddInnerUser"  on-oj-action="[[addInnerUser]]">
+                             Add Participant
+                         </oj-button>
+                     </div>
+                 </div>
+             </oj-popup>
+         </div>
+     </div>
+ </oj-popup>
+<!--     <oj-button id="btnEdit" on-oj-action="[[openEditor]]" disabled="[[initial]]">Participants</oj-button>-->
+
+
+ <oj-popup id="popup4" class="demo-popup"
+           tail="none" position.my.horizontal="center" position.my.vertical="center"
+           position.at.horizontal="center" position.at.vertical="center"
+           position.of="window" position.offset.y="-10"
+           modality="modal" on-oj-animate-start="[[startAnimationListener]]">
+     <div class="demo-popup-body">
+         <div class="demo-popup-header"><h5>Pick new schedule</h5></div>
+         <div id="div5">
+             <oj-input-date-time  value={{newDate}} label-hint="pick a new schedule"></oj-input-date-time>
+             <br/>
+         </div>
+         <div class="demo-popup-footer">
+             <br>
+             <oj-button id="btnCancelTime"  on-oj-action="[[cancelNewTime]]">
+                 Cancel
+             </oj-button>
+             <oj-button id="btnAddNewTime"  on-oj-action="[[addNewTime]]">
+                 Done
+             </oj-button>
+         </div>
+     </div>
+ </oj-popup>
+<div style="float:left; margin-left:450px">
+    <oj-button id="btnMinusYear"  on-oj-action="[[minusYear]]">
+        <
+    </oj-button>
+    <span style="position: relative;margin-left:15px ;margin-right:15px; top:10px">
+        <oj-bind-text value="[[selectedYear]]"></oj-bind-text>
+    </span>
+    <oj-button id="btnAddYear"  on-oj-action="[[addYear]]">
+        >
+    </oj-button>
+</div>
+<div style="float:right">
+    <div style="float:left">
+<img src="https://i.ibb.co/d5jP0hT/blue.png" width="40" height="40"/>
+    <oj-label>Host</oj-label>
+    </div>
+    <div style="float:left ;margin-left:20px">
+<img src="https://i.ibb.co/CPpDMDr/green.png" width="40" height="40"/>
+    <oj-label>Participant</oj-label>
+    </div>
+</div>
+
+<!--    <oj-button id="btnTime" on-oj-action="[[openTime]]" disabled="[[active]]">Change Schedule</oj-button>-->

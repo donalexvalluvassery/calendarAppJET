@@ -1,0 +1,23 @@
+<div class="oj-hybrid-padding">
+    <h3 class="oj-header-border" data-bind="text: 'Invoice Risk Calculation'"></h3>
+    <br />
+    <oj-table id='t1' aria-label='Invoice Risk Table' data='[[dataprovider]]' as='cell' columns='{{columnArray}}'
+              columns-default='{"template": "cellTemplate", "headerTemplate": "headerTemplate"}' style='width: 100%;'>
+        <template slot="cellTemplate">
+            <oj-bind-text value="[[cell.data]]"></oj-bind-text>
+        </template>
+        <template slot="riskCellTemplate">
+            <oj-led-gauge title="Invoice risk" value="[[cell.data]]" min="0" max="1" thresholds="[[thresholdValues]]"
+                          metric-label.rendered="off" style="float:left;width:40px;height:40px;"></oj-led-gauge>
+        </template>
+        <template slot="dateTemplate">
+            <oj-bind-text value="[[dateConverter.format(cell.data)]]"></oj-bind-text>
+        </template>
+        <template slot="amountTemplate">
+            <oj-bind-text value="[[numberConverter.format(cell.data)]]"></oj-bind-text>
+        </template>
+        <template slot="headerTemplate" data-oj-as="header">
+            <oj-bind-text value="[[header.data]]"></oj-bind-text>
+        </template>
+    </oj-table>
+</div>
