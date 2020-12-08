@@ -39,8 +39,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
             }
 
         }
-        ;
-
         var registerModel = new RegisterModel();
         return registerModel;
 

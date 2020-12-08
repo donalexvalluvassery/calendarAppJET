@@ -10,8 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="134d914f-ce2e-4f4b-83cd-973e94f2067f" name="Default Changelist" comment="Initial Commit">
+    <list default="true" id="134d914f-ce2e-4f4b-83cd-973e94f2067f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/viewModels/incidents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/incidents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/viewModels/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +77,16 @@
       <workItem from="1606111076904" duration="130947000" />
       <workItem from="1606904295859" duration="53640000" />
       <workItem from="1607345478943" duration="305000" />
-      <workItem from="1607346073837" duration="304000" />
+      <workItem from="1607346073837" duration="2296000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial Commit">
+      <created>1607346494526</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607346494526</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,14 +109,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1607345680496">
+    <state x="320" y="101" key="#Deployment" timestamp="1607346372126">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1607345680496" />
+    <state x="320" y="101" key="#Deployment/0.0.1440.900@0.0.1440.900" timestamp="1607346372126" />
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1607346494284">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1607346494284" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1605795175120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1605795175119" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1607346500903">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1607346500903" />
+    <state x="458" y="346" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1607346482347">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="346" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1440.900@0.0.1440.900" timestamp="1607346482347" />
     <state x="531" y="351" key="git4idea.ui.GitResetDialog" timestamp="1607345431390">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

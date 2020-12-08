@@ -38,6 +38,7 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
             self.userprovider(new ArrayDataProvider(userObservableArray, {
                 keyAttributes: 'userName'
             }));
+            var itemData;
             self.selectionValue = ko.observableArray();
             self.selectedItems = new keySet.ObservableKeySet();
             self.dataprovider(new ArrayDataProvider(dataObservableArray, {
@@ -64,10 +65,12 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
             }
 
             this.hostColour = function (x){
-                if(x)
+                if(x) {
                     return "https://i.ibb.co/d5jP0hT/blue.png";
-                else
+                }
+                else {
                     return "https://i.ibb.co/CPpDMDr/green.png";
+                }
             }
 
             //begin list view
@@ -204,7 +207,8 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                             alert('Invalid Date Range');
                         }
                     });});
-            $.ajax({
+            function request(){
+                $.ajax({
                 url: Url,
                 type: 'GET',
                 data: {username: userName, startdate: self.selectedYear()+"-01-01 00:00:00", enddate: self.selectedYear()+"-12-31 00:00:00"},
@@ -224,7 +228,8 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                 error: function () {
                     alert('Invalid Date Range');
                 }
-            });
+            });}
+            request();
             //start change year
             self.addYear = function (event){
                 self.selectedYear(self.selectedYear()+1);
@@ -328,8 +333,8 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
 
             this.userChangedListener = function(event){
 
-                    selectionText =event.detail.value;
-                    self.tempKey=event.detail.value;
+                selectionText =event.detail.value;
+                self.tempKey=event.detail.value;
                 self.userName=event.detail.value;
                 console.log(self.userName);
 
@@ -428,17 +433,17 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
             this.deleteUser = function(){
                 userObservableArray.remove(function (item) {
                     return item.userName == self.userName; });
-                    $.ajax({
-                        url: deleteUrl,
-                        type: 'DELETE',
-                        data: {"userName": self.userName},
-                        success: function (data) {
-                            console.log(data);
-                        },
-                        error: function () {
-                            alert('User Not Deleted');
-                        }
-                    });
+                $.ajax({
+                    url: deleteUrl,
+                    type: 'DELETE',
+                    data: {"userName": self.userName},
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function () {
+                        alert('User Not Deleted');
+                    }
+                });
             };
             this.addUser = function(){
                 var popup = document.getElementById('popup3');
@@ -511,7 +516,7 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                                 alert('Invalid Date Range');
                             }
                         });
-                            console.log(data);
+                        console.log(data);
                     },
                     error: function (){
                         alert('Schedule not changed');
@@ -544,13 +549,15 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                     this.selectedMenuItem(text + ' from ' + itemTitle);
                     itemTitle = null;
                 }
-                else
+                else {
                     this.selectedMenuItem(text + ' from timeline background');
+                }
             }.bind(this);
             //end context menu
             //begin timeline
             var currentDate = ConverterUtilsI18n.IntlConverterUtils.dateToLocalIso(new Date());
             this.referenceObjects = [{value: currentDate}];
+            setInterval(request,1000 * 60 * 2);
 
         }
         return new ViewModel();
