@@ -4,7 +4,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojarraydatapr
 
         function LoginModel()
         {
-            const Url= "http://152.67.161.137:8080/login";
+            const Url= "152.67.161.137:8080/login";
 
             this.userName = ko.observable("");
             this.password = ko.observable("");

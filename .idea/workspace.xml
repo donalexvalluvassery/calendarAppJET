@@ -12,9 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="134d914f-ce2e-4f4b-83cd-973e94f2067f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/viewModels/incidents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/incidents.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/viewModels/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/viewModels/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +83,7 @@
       <workItem from="1607395722981" duration="3381000" />
       <workItem from="1607517537093" duration="6937000" />
       <workItem from="1607947339105" duration="21000" />
-      <workItem from="1608100660506" duration="2429000" />
+      <workItem from="1608100660506" duration="3259000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607346494526</created>
@@ -115,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608105134503</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed localhost to cloud ip">
+      <created>1608114966740</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608114966740</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +141,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Added async call every 2 mins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added async call every 2 mins" />
+    <MESSAGE value="Changed localhost to cloud ip" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed localhost to cloud ip" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="101" key="#Deployment" timestamp="1607346372126">
@@ -147,19 +153,19 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="31" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1607594244415" />
-    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1608105134297">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1608114966454">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1607395751293" />
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1608114966454" />
     <state x="297" y="23" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1608105134297" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1605795175120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1605795175119" />
-    <state x="320" y="185" key="Vcs.Push.Dialog.v2" timestamp="1608105135964">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1608114968238">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1607395753768" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608114968238" />
     <state x="320" y="185" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1608105135964" />
     <state x="458" y="346" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1607346482347">
       <screen x="0" y="0" width="1440" height="900" />
