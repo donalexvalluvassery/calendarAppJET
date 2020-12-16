@@ -2,8 +2,8 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
         'ojs/ojinputnumber', 'ojs/ojtable', 'ojs/ojlabel', 'ojs/ojvalidationgroup', 'ojs/ojformlayout', 'ojs/ojtoolbar','ojs/ojformlayout','ojs/ojmessages','ojs/ojdatagrid','ojs/ojbutton','ojs/ojdatetimepicker','ojs/ojgauge','promise','ojs/ojtimeline','ojs/ojlistitemlayout','ojs/ojlistview'],
     function (ko, Bootstrap, ArrayDataProvider, BufferingDataProvider, keySet,ConverterUtilsI18n, AnimationUtils)
     {
-        const Url= "http://localhost:8080/meetings";
-        const deleteUrl="http://localhost:8080/update"
+        const Url= "http://152.67.161.137:8080/meetings";
+        const deleteUrl="http://152.67.161.137:8080/update"
         var userName= sessionStorage.getItem("username");
         console.log(userName);
         function ViewModel() {
@@ -76,11 +76,7 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
             //begin list view
             this.currentIndex;
             this.currentItem = ko.observable('');
-            this.allItems = ko.observableArray([{ id: 1, item: 'Milk' },
-                { id: 2, item: 'Flour' },
-                { id: 3, item: 'Sugar' },
-                { id: 4, item: 'Vanilla Extract' }
-            ]);
+            this.allItems = ko.observableArray();
             this.selectedItems = new keySet.ObservableKeySet();
             var lastItemId = this.allItems().length;
             this.isTextEmpty = ko.observable(true);
