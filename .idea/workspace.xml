@@ -12,8 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="134d914f-ce2e-4f4b-83cd-973e94f2067f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/appController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/appController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/viewModels/incidents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/incidents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/viewModels/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/viewModels/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/viewModels/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +53,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -78,6 +84,10 @@
       <workItem from="1606904295859" duration="53640000" />
       <workItem from="1607345478943" duration="305000" />
       <workItem from="1607346073837" duration="2296000" />
+      <workItem from="1607395722981" duration="3381000" />
+      <workItem from="1607517537093" duration="6937000" />
+      <workItem from="1607947339105" duration="21000" />
+      <workItem from="1608100660506" duration="1211000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1607346494526</created>
@@ -86,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607346494526</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added async call every 2 mins">
+      <created>1607395751607</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607395751607</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,25 +123,30 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Added async call every 2 mins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added async call every 2 mins" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="101" key="#Deployment" timestamp="1607346372126">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="101" key="#Deployment/0.0.1440.900@0.0.1440.900" timestamp="1607346372126" />
-    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1607346494284">
+    <state x="208" y="31" key="#Project_Structure" timestamp="1607594244415">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1607346494284" />
+    <state x="208" y="31" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1607594244415" />
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2" timestamp="1607395751293">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="297" y="23" width="846" height="825" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1607395751293" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1605795175120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1605795175119" />
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1607346500903">
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1607395753768">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1607346500903" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1607395753768" />
     <state x="458" y="346" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1607346482347">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -137,5 +159,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="88" y="135" key="new project wizard/0.0.1440.900@0.0.1440.900" timestamp="1605787527612" />
+    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1607594908614">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1607594908614" />
   </component>
 </project>

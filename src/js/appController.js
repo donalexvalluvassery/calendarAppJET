@@ -32,7 +32,7 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockouttemplateutils',
       const mdQuery = ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
       this.mdScreen = ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);
 
-      if (document.cookie=="") {
+      if (sessionStorage.getItem("username")===null) {
           var navData = [
               {path: '', redirect: 'login'},
               // { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
@@ -86,8 +86,9 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockouttemplateutils',
 
       this.logoutClick = function (){
 
-          document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          // document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          // document.cookie = "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          sessionStorage.clear();
           window.location.href = "/?ojr=login";
          }
 
@@ -95,7 +96,7 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockouttemplateutils',
       // Application Name used in Branding Area
       this.appName = ko.observable("Calendar App");
       // User Info used in Global Navigation area
-      this.userLogin = ko.observable(document.cookie);
+      this.userLogin = ko.observable(sessionStorage.getItem("username"));
 
       // Footer
       this.footerLinks = [

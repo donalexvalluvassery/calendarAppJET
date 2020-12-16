@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "An Oracle JavaScript Extension Toolkit(JET) web app",
   "dependencies": {
-    "@oracle/oraclejet": "~9.2.0"
+    "@oracle/oraclejet": "~9.2.0",
+    "karma": "^5.2.3",
+    "requirejs": "^2.3.6"
   },
   "devDependencies": {
-    "@oracle/oraclejet-tooling": "~9.2.0"
+    "@oracle/oraclejet-tooling": "~9.2.0",
+    "karma-requirejs": "file:../../../usr/local/lib/node_modules/karma-requirejs"
   },
   "engines": {
     "node": ">=0.10.0"

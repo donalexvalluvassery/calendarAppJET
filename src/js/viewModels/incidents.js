@@ -4,7 +4,7 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
     {
         const Url= "http://localhost:8080/meetings";
         const deleteUrl="http://localhost:8080/update"
-        var userName= document.cookie;
+        var userName= sessionStorage.getItem("username");
         console.log(userName);
         function ViewModel() {
             var self=this;
@@ -411,7 +411,6 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     success: function(data) {
-                        alert('Meeting Created.');
                         dataObservableArray.push(data);
                     },
                     error: function (){
@@ -433,10 +432,15 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
             this.deleteUser = function(){
                 userObservableArray.remove(function (item) {
                     return item.userName == self.userName; });
+                var data={
+                    "userName": self.userName,
+                    "meetId": self.meetingId
+                }
                 $.ajax({
                     url: deleteUrl,
                     type: 'DELETE',
-                    data: {"userName": self.userName},
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
                     success: function (data) {
                         console.log(data);
                     },

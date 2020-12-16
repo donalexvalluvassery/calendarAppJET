@@ -24,7 +24,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojarraydatapr
                         success: function (data) {
                             // alert('User logged in.');
                             console.log(data);
-                            document.cookie = self.userName();
+                            sessionStorage.setItem("username",self.userName());
                             window.location.href= "/?ojr=incidents";
 
                         },
