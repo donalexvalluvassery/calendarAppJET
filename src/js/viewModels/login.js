@@ -20,8 +20,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojarraydatapr
                         url: Url,
                         type: 'POST',
                         data: JSON.stringify(data),
-                        contentType: 'jsonp',
-                        crossDomain: true,
+                        contentType: 'application/json',
                         success: function (data) {
                             // alert('User logged in.');
                             console.log(data);
