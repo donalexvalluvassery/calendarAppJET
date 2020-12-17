@@ -2,8 +2,8 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
         'ojs/ojinputnumber', 'ojs/ojtable', 'ojs/ojlabel', 'ojs/ojvalidationgroup', 'ojs/ojformlayout', 'ojs/ojtoolbar','ojs/ojformlayout','ojs/ojmessages','ojs/ojdatagrid','ojs/ojbutton','ojs/ojdatetimepicker','ojs/ojgauge','promise','ojs/ojtimeline','ojs/ojlistitemlayout','ojs/ojlistview'],
     function (ko, Bootstrap, ArrayDataProvider, BufferingDataProvider, keySet,ConverterUtilsI18n, AnimationUtils)
     {
-        const Url= "http://152.67.161.137:8080/meetings";
-        const deleteUrl="http://152.67.161.137:8080/update"
+        const Url= "http://localhost:8080/meetings";
+        const deleteUrl="http://localhost:8080/update"
         var userName= sessionStorage.getItem("username");
         console.log(userName);
         function ViewModel() {
@@ -38,6 +38,29 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
             self.userprovider(new ArrayDataProvider(userObservableArray, {
                 keyAttributes: 'userName'
             }));
+            var placer=[
+                {
+                    "host": true,
+                    "hosts": [
+                        {
+                            "email": "leonjoek@gmail.com",
+                            "firstName": "Leon",
+                            "lastName": "Joe",
+                            "userName": "leonjoe"
+                        }
+                    ],
+                    "meetingId": "22318",
+                    "meetingName": "Meeting on 2018",
+                    "timestamp": "2000-12-03T12:10:00Z[UTC]",
+                    "users": [
+                        {
+                            "email": "nithinssuresh@gmail.com",
+                            "firstName": "Nithin",
+                            "lastName": "Suresh",
+                            "userName": "nithins"
+                        }
+                    ]
+                }];
             var itemData;
             self.selectionValue = ko.observableArray();
             self.selectedItems = new keySet.ObservableKeySet();
@@ -209,17 +232,28 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                 type: 'GET',
                 data: {username: userName, startdate: self.selectedYear()+"-01-01 00:00:00", enddate: self.selectedYear()+"-12-31 00:00:00"},
                 success: function (data) {
-                    console.log(data);
-                    dataObservableArray = ko.observableArray(data);
-                    self.objJSON = data;
-                    self.dataprovider(new ArrayDataProvider(dataObservableArray, {
-                        keyAttributes: 'meetingId',
-                        implicitSort: [{attribute: 'timestamp', direction: 'ascending'}]
-                    }));
-                    //to populate timeline
-                    self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
-                        keyAttributes: 'meetingId'
-                    }));
+                    if(data.length) {
+                        console.log(data);
+                        dataObservableArray = ko.observableArray(data);
+                        self.objJSON = data;
+                        self.dataprovider(new ArrayDataProvider(dataObservableArray, {
+                            keyAttributes: 'meetingId',
+                            implicitSort: [{attribute: 'timestamp', direction: 'ascending'}]
+                        }));
+                        //to populate timeline
+                        self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                            keyAttributes: 'meetingId'
+                        }));
+                    }
+                else{
+                        data=placer;
+                        dataObservableArray = ko.observableArray(data);
+                        self.objJSON = data;
+                        //to populate timeline
+                        self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                            keyAttributes: 'meetingId'
+                        }));
+                    }
                 },
                 error: function () {
                     alert('Invalid Date Range');
@@ -234,16 +268,30 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                     type: 'GET',
                     data: {username: userName, startdate: self.selectedYear()+"-01-01 00:00:00", enddate: self.selectedYear()+"-12-31 00:00:00"},
                     success: function (data) {
-                        console.log(data);
-                        dataObservableArray = ko.observableArray(data);
-                        self.objJSON = data;
-                        //to populate timeline
-                        self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
-                            keyAttributes: 'meetingId'
-                        }));
-                        self.startYear(self.selectedYear()+'-01-01');
-                        self.endYear(self.selectedYear()+'-12-31');
-                        self.viewPort(self.selectedYear()+'-11-29');
+                        if(data.length) {
+                            console.log(data);
+                            dataObservableArray = ko.observableArray(data);
+                            self.objJSON = data;
+                            //to populate timeline
+                            self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                                keyAttributes: 'meetingId'
+                            }));
+                            self.startYear(self.selectedYear() + '-01-01');
+                            self.endYear(self.selectedYear() + '-12-31');
+                            self.viewPort(self.selectedYear() + '-11-29');
+                        }
+                        else{
+                            data=placer;
+                            dataObservableArray = ko.observableArray(data);
+                            self.objJSON = data;
+                            //to populate timeline
+                            self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                                keyAttributes: 'meetingId'
+                            }));
+                            self.startYear(self.selectedYear() + '-01-01');
+                            self.endYear(self.selectedYear() + '-12-31');
+                            self.viewPort(self.selectedYear() + '-11-29');
+                        }
                     },
                     error: function () {
                         alert('Invalid Date Range');
@@ -257,21 +305,40 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                     type: 'GET',
                     data: {username: userName, startdate: self.selectedYear()+"-01-01 00:00:00", enddate: self.selectedYear()+"-12-31 00:00:00"},
                     success: function (data) {
-                        console.log(data);
-                        dataObservableArray = ko.observableArray(data);
-                        self.objJSON = data;
-                        self.dataprovider(new ArrayDataProvider(dataObservableArray, {
-                            keyAttributes: 'meetingId',
-                            implicitSort: [{attribute: 'timestamp', direction: 'ascending'}]
-                        }));
-                        //to populate timeline
-                        self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
-                            keyAttributes: 'meetingId'
-                        }));
-                        self.startYear(self.selectedYear()+'-01-01');
-                        self.endYear(self.selectedYear()+'-12-31');
-                        self.viewPort(self.selectedYear()+'-11-29');
-                        document.getElementById('timeline').refresh();
+                        if(data.length) {
+                            console.log(data);
+                            dataObservableArray = ko.observableArray(data);
+                            self.objJSON = data;
+                            self.dataprovider(new ArrayDataProvider(dataObservableArray, {
+                                keyAttributes: 'meetingId',
+                                implicitSort: [{attribute: 'timestamp', direction: 'ascending'}]
+                            }));
+                            //to populate timeline
+                            self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                                keyAttributes: 'meetingId'
+                            }));
+                            self.startYear(self.selectedYear() + '-01-01');
+                            self.endYear(self.selectedYear() + '-12-31');
+                            self.viewPort(self.selectedYear() + '-11-29');
+                            document.getElementById('timeline').refresh();
+                        }
+                    else{
+                            data=placer;
+                            dataObservableArray = ko.observableArray(data);
+                            self.objJSON = data;
+                            self.dataprovider(new ArrayDataProvider(dataObservableArray, {
+                                keyAttributes: 'meetingId',
+                                implicitSort: [{attribute: 'timestamp', direction: 'ascending'}]
+                            }));
+                            //to populate timeline
+                            self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                                keyAttributes: 'meetingId'
+                            }));
+                            self.startYear(self.selectedYear() + '-01-01');
+                            self.endYear(self.selectedYear() + '-12-31');
+                            self.viewPort(self.selectedYear() + '-11-29');
+                            document.getElementById('timeline').refresh();
+                        }
                     },
                     error: function () {
                         alert('Invalid Date Range');
@@ -504,13 +571,24 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
                             type: 'GET',
                             data: {username: userName, startdate: self.selectedYear()+"-01-01 00:00:00", enddate: self.selectedYear()+"-12-31 00:00:00"},
                             success: function (data) {
-                                console.log(data);
-                                dataObservableArray = ko.observableArray(data);
-                                self.objJSON = data;
-                                //to populate timeline
-                                self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
-                                    keyAttributes: 'meetingId'
-                                }));
+                                if(data.length) {
+                                    console.log(data);
+                                    dataObservableArray = ko.observableArray(data);
+                                    self.objJSON = data;
+                                    //to populate timeline
+                                    self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                                        keyAttributes: 'meetingId'
+                                    }));
+                                }
+                                else{
+                                    data=placer;
+                                    dataObservableArray = ko.observableArray(data);
+                                    self.objJSON = data;
+                                    //to populate timeline
+                                    self.timeDataProvider(new ArrayDataProvider(dataObservableArray, {
+                                        keyAttributes: 'meetingId'
+                                    }));
+                                }
                             },
                             error: function () {
                                 alert('Invalid Date Range');

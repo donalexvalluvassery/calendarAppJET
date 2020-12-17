@@ -4,7 +4,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojinputtext',
 
         function RegisterModel()
         {
-            const Url= "http://152.67.161.137:8080/account";
+            const Url= "http://localhost:8080/account";
 
             this.userName = ko.observable("");
             this.password = ko.observable("");
