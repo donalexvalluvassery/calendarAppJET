@@ -2,8 +2,8 @@ define(['knockout', 'ojs/ojbootstrap', 'ojs/ojarraydataprovider', 'ojs/ojbufferi
         'ojs/ojinputnumber', 'ojs/ojtable', 'ojs/ojlabel', 'ojs/ojvalidationgroup', 'ojs/ojformlayout', 'ojs/ojtoolbar','ojs/ojformlayout','ojs/ojmessages','ojs/ojdatagrid','ojs/ojbutton','ojs/ojdatetimepicker','ojs/ojgauge','promise','ojs/ojtimeline','ojs/ojlistitemlayout','ojs/ojlistview'],
     function (ko, Bootstrap, ArrayDataProvider, BufferingDataProvider, keySet,ConverterUtilsI18n, AnimationUtils)
     {
-        const Url= "http://localhost:8080/meetings";
-        const deleteUrl="http://localhost:8080/update"
+        const Url= "http://152.67.161.137:8080/meetings";
+        const deleteUrl="http://152.67.161.137:8080/update"
         var userName= sessionStorage.getItem("username");
         console.log(userName);
         function ViewModel() {
