@@ -3,8 +3,7 @@
     "source": {
       "common": "src",
       "web": "src-web",
-      "hybrid": "src-hybrid",
-      "javascript": "js"
+      "hybrid": "src-hybrid"
     },
     "staging": {
       "web": "web",
