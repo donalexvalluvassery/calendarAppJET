@@ -2,8 +2,7 @@
   "paths": {
     "source": {
       "common": "src",
-      "web": "src-web",
-      "hybrid": "src-hybrid"
+      "web": "src-web"
     },
     "staging": {
       "web": "web",
