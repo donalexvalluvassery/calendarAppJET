@@ -4,8 +4,7 @@
       "common": "src",
       "web": "src-web",
       "hybrid": "src-hybrid",
-      "javascript": "js",
-      "typescript": "ts"
+      "javascript": "js"
     },
     "staging": {
       "web": "web",
